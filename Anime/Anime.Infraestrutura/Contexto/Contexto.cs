@@ -25,7 +25,8 @@ namespace Anime.Infraestrutura.Contexto
 
                 entity.HasOne(x => x.Diretor)
                       .WithMany()
-                      .HasForeignKey(x => x.DiretorCodigo);
+                      .HasForeignKey(x => x.DiretorCodigo)
+                      .OnDelete(DeleteBehavior.Restrict);
 
                 entity.Property(x => x.Apagado)
                       .HasDefaultValue(false);
