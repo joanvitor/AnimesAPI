@@ -1,6 +1,8 @@
-﻿namespace Anime.Aplicacao.DTOs
+﻿using Anime.Aplicacao.Interfaces.Marcadores;
+
+namespace Anime.Aplicacao.DTOs
 {
-    public class AnimeDTO
+    public class AnimeDTO : IEntidadeDTO
     {
         public int Codigo { get; set; }
         public string Nome { get; set; }
