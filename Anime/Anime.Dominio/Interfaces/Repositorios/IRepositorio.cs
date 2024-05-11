@@ -3,7 +3,7 @@ using Anime.Dominio.Interfaces.OperacaoesBancoDeDados;
 
 namespace Anime.Dominio.Interfaces.Repositorios
 {
-    public interface IRepositorio<TEntidade> : ICRUD<TEntidade> where TEntidade : class, IEntidade
+    public interface IRepositorio<TEntidade> : ICRUD<TEntidade> where TEntidade : class, IEntidadeDominio
     {
     }
 }

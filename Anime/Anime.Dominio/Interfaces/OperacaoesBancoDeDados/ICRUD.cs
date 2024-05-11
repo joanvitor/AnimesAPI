@@ -3,7 +3,7 @@ using Anime.Dominio.Interfaces.Marcadores;
 
 namespace Anime.Dominio.Interfaces.OperacaoesBancoDeDados
 {
-    public interface ICRUD<TEntidade> where TEntidade : class, IEntidade
+    public interface ICRUD<TEntidade> where TEntidade : class, IEntidadeDominio
     {
         void Cadastrar(TEntidade entidade);
         IQueryable<TEntidade> Buscar(Expression<Func<TEntidade, bool>> expressaoWhere);
