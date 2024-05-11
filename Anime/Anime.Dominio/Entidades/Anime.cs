@@ -11,5 +11,8 @@ namespace Anime.Dominio.Entidades
 
         public int DiretorCodigo { get; set; }
         public virtual Diretor Diretor { get; set; }
+
+        public void DefinirApagado(bool apagado)
+            => Apagado = apagado;
     }
 }
