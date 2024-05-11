@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Anime.Infraestrutura", "Ani
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Anime.Aplicacao", "Anime.Aplicacao\Anime.Aplicacao.csproj", "{5ED9D699-EB56-466A-BCAB-32A39C01687D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Anime.API", "Anime.API\Anime.API.csproj", "{659DFF7D-8A30-4C8C-93EF-EDE48CF04845}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{5ED9D699-EB56-466A-BCAB-32A39C01687D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5ED9D699-EB56-466A-BCAB-32A39C01687D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5ED9D699-EB56-466A-BCAB-32A39C01687D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{659DFF7D-8A30-4C8C-93EF-EDE48CF04845}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{659DFF7D-8A30-4C8C-93EF-EDE48CF04845}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{659DFF7D-8A30-4C8C-93EF-EDE48CF04845}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{659DFF7D-8A30-4C8C-93EF-EDE48CF04845}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
