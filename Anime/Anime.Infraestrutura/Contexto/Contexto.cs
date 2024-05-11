@@ -8,8 +8,17 @@ namespace Anime.Infraestrutura.Contexto
         public DbSet<Dominio.Entidades.Anime> Anime { get; set; }
         public DbSet<Diretor> Diretor { get; set; }
 
+        public Contexto()
+        {
+        }
+
         public Contexto(DbContextOptions<Contexto> options) : base(options)
         {
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseMySql("Server=localhost;Database=AnimeDB;Uid=root;Pwd=", ServerVersion.AutoDetect("Server=localhost;Database=AnimeDB;Uid=root;Pwd="));
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -24,7 +33,7 @@ namespace Anime.Infraestrutura.Contexto
                       .IsRequired();
 
                 entity.HasOne(x => x.Diretor)
-                      .WithMany()
+                      .WithMany(x => x.Animes)
                       .HasForeignKey(x => x.DiretorCodigo)
                       .OnDelete(DeleteBehavior.Restrict);
 
