@@ -1,5 +1,5 @@
-﻿using Anime.Dominio.Interfaces.Entidades;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
+using Anime.Dominio.Interfaces.Marcadores;
 
 namespace Anime.Dominio.Interfaces.OperacaoesBancoDeDados
 {

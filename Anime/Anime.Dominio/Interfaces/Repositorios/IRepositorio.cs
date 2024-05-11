@@ -1,4 +1,4 @@
-﻿using Anime.Dominio.Interfaces.Entidades;
+﻿using Anime.Dominio.Interfaces.Marcadores;
 using Anime.Dominio.Interfaces.OperacaoesBancoDeDados;
 
 namespace Anime.Dominio.Interfaces.Repositorios

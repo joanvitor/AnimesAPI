@@ -14,4 +14,9 @@
     <ProjectReference Include="..\Anime.Dominio\Anime.Dominio.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
+    <Folder Include="Servicos\" />
+  </ItemGroup>
+
 </Project>

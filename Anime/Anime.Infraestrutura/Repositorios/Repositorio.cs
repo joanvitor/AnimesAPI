@@ -1,5 +1,5 @@
 ﻿using System.Linq.Expressions;
-using Anime.Dominio.Interfaces.Entidades;
+using Anime.Dominio.Interfaces.Marcadores;
 using Anime.Dominio.Interfaces.Repositorios;
 
 namespace Anime.Infraestrutura.Repositorios

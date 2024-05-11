@@ -1,4 +1,4 @@
-﻿using Anime.Dominio.Interfaces.Entidades;
+﻿using Anime.Dominio.Interfaces.Marcadores;
 
 namespace Anime.Dominio.Entidades
 {
