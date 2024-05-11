@@ -1,6 +1,8 @@
-﻿namespace Anime.Dominio.Entidades
+﻿using Anime.Dominio.Interfaces.Entidades;
+
+namespace Anime.Dominio.Entidades
 {
-    public class Anime
+    public class Anime : IEntidade
     {
         public int Codigo { get; set; }
         public string Nome { get; set; }
