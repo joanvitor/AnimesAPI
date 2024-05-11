@@ -2,7 +2,7 @@
 
 namespace Anime.Dominio.Entidades
 {
-    public class Diretor : IEntidade
+    public class Diretor : IEntidadeDominio
     {
         public int Codigo { get; set; }
         public string Nome { get; set; }
