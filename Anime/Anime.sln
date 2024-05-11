@@ -5,6 +5,8 @@ VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Anime.Dominio", "Anime.Dominio\Anime.Dominio.csproj", "{702E2CEC-0E6F-4E6A-AFFF-F88AB3B13DA0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Anime.Infraestrutura", "Anime.Infraestrutura\Anime.Infraestrutura.csproj", "{449821F8-A4AB-48F0-9BBE-C0681B2D5432}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{702E2CEC-0E6F-4E6A-AFFF-F88AB3B13DA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{702E2CEC-0E6F-4E6A-AFFF-F88AB3B13DA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{702E2CEC-0E6F-4E6A-AFFF-F88AB3B13DA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{449821F8-A4AB-48F0-9BBE-C0681B2D5432}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{449821F8-A4AB-48F0-9BBE-C0681B2D5432}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{449821F8-A4AB-48F0-9BBE-C0681B2D5432}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{449821F8-A4AB-48F0-9BBE-C0681B2D5432}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
