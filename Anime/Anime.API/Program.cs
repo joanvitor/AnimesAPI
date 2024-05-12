@@ -17,12 +17,21 @@ builder.Services.AddDbContext<Contexto>(op =>
     op.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
 });
 
+builder.Services.AddAutoMapper(typeof(MapeadorDeDominioParaDTO));
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-builder.Services.AddAutoMapper(typeof(MapeadorDeDominioParaDTO));
+//builder.Services.AddSwaggerGen(x =>
+//{
+//    x.SwaggerDoc("versão 01", new OpenApiInfo
+//    {
+//        Title = "Titulo da API",
+//        Version = "v1.0.0",
+//        Description = "Descrição da api"
+//    });
+//});
 
 builder.Services.AddScoped(typeof(IRepositorio<>), typeof(Repositorio<>));
 builder.Services.AddScoped<IRepositorioAnime, RepositorioAnime>();
@@ -37,7 +46,10 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(x =>
+    {
+        x.SwaggerEndpoint("v1/swagger.json", "API V1");
+    });
 }
 
 app.UseHttpsRedirection();
