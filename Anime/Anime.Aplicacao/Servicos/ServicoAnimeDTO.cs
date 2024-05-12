@@ -2,6 +2,7 @@
 using Anime.Aplicacao.DTOs;
 using Anime.Dominio.Interfaces.Repositorios;
 using AutoMapper;
+using AutoMapper.QueryableExtensions;
 
 namespace Anime.Aplicacao.Servicos
 {
@@ -14,6 +15,13 @@ namespace Anime.Aplicacao.Servicos
         {
             _mapeador = mapeador;
             _repositorio = repositorio;
+        }
+
+        public IQueryable<AnimeDTO> ObterAtivos()
+        {
+            var animesAtivos = _repositorio.BuscarTodos().Where(x => !x.Apagado);
+
+            return animesAtivos.ProjectTo<AnimeDTO>(_mapeador.ConfigurationProvider);
         }
 
         public void RemoverLogicamente(AnimeDTO animeDto)
