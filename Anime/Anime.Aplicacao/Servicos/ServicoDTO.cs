@@ -29,14 +29,14 @@ namespace Anime.Aplicacao.Servicos
             _repositorio.Atualizar(entidadeDominio);
         }
 
-        public IQueryable<TEntidadeDTO> Buscar(Expression<Func<TEntidadeDTO, bool>> expressaoWhere)
-        {
-            var expressaoDominio = ConversorExpressao.Converter<TEntidade, TEntidadeDTO>(expressaoWhere);
+        //public IQueryable<TEntidadeDTO> Buscar(Expression<Func<TEntidadeDTO, bool>> expressaoWhere)
+        //{
+        //    var expressaoDominio = ConversorExpressao.Converter<TEntidade, TEntidadeDTO>(expressaoWhere);
 
-            var queryEntidadeDominio = _repositorio.Buscar(expressaoDominio).AsQueryable();
+        //    var queryEntidadeDominio = _repositorio.Buscar(expressaoDominio).AsQueryable();
 
-            return queryEntidadeDominio.ProjectTo<TEntidadeDTO>(_mapeador.ConfigurationProvider);
-        }
+        //    return queryEntidadeDominio.ProjectTo<TEntidadeDTO>(_mapeador.ConfigurationProvider);
+        //}
 
         public TEntidadeDTO Buscar(int codigo)
         {
