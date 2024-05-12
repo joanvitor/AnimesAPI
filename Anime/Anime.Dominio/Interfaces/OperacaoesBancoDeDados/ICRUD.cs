@@ -7,6 +7,7 @@ namespace Anime.Dominio.Interfaces.OperacaoesBancoDeDados
     {
         void Cadastrar(TEntidade entidade);
         IQueryable<TEntidade> Buscar(Expression<Func<TEntidade, bool>> expressaoWhere);
+        TEntidade Buscar(int codigo);
         IQueryable<TEntidade> BuscarTodos();
         IQueryable<TEntidade> BuscarPaginado(int numeroDaPagina, int quantidadeEmUmaPagina);
         void Atualizar(TEntidade entidade);

@@ -22,6 +22,11 @@ namespace Anime.Infraestrutura.Repositorios
             return BuscarTodos().Where(expressaoWhere).AsQueryable();
         }
 
+        public TEntidade Buscar(int codigo)
+        {
+            return _contexto.Set<TEntidade>().Find(codigo);
+        }
+
         public IQueryable<TEntidade> BuscarPaginado(int numeroDaPagina, int quantidadeEmUmaPagina)
         {
             var quantidadeRegistrosASeremIgnorados = (numeroDaPagina - 1) * quantidadeEmUmaPagina;

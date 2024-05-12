@@ -31,11 +31,20 @@ namespace Anime.Aplicacao.Servicos
 
         public IQueryable<TEntidadeDTO> Buscar(Expression<Func<TEntidadeDTO, bool>> expressaoWhere)
         {
-            var expressaoDominio = ConversorExpressao<TEntidade, TEntidadeDTO>.Converter(expressaoWhere);
+            var expressaoDominio = ConversorExpressao.Converter<TEntidade, TEntidadeDTO>(expressaoWhere);
 
             var queryEntidadeDominio = _repositorio.Buscar(expressaoDominio).AsQueryable();
 
             return queryEntidadeDominio.ProjectTo<TEntidadeDTO>(_mapeador.ConfigurationProvider);
+        }
+
+        public TEntidadeDTO Buscar(int codigo)
+        {
+            var entidadeDominio = _repositorio.Buscar(codigo);
+
+            var entidadeDto = _mapeador.Map<TEntidadeDTO>(entidadeDominio);
+
+            return entidadeDto;
         }
 
         public IQueryable<TEntidadeDTO> BuscarPaginado(int numeroDaPagina, int quantidadeEmUmaPagina)
