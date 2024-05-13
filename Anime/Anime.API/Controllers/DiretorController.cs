@@ -10,10 +10,13 @@ namespace Anime.API.Controllers
     public class DiretorController : Controller
     {
         private readonly IServicoDTO<Diretor, DiretorDTO> _servicoDiretor;
+        private readonly ILogger _logger;
 
-        public DiretorController(IServicoDTO<Diretor, DiretorDTO> servicoDiretor)
+        public DiretorController(IServicoDTO<Diretor, DiretorDTO> servicoDiretor, 
+                                 ILogger logger)
         {
             _servicoDiretor = servicoDiretor;
+            _logger = logger;
         }
 
         /// <summary>
@@ -23,52 +26,97 @@ namespace Anime.API.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<DiretorDTO>> Get()
         {
-            var diretores = _servicoDiretor.BuscarTodos().ToList();
+            try
+            {
+                var diretores = _servicoDiretor.BuscarTodos().ToList();
 
-            return Ok(diretores);
+                return Ok(diretores);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+
+                return BadRequest();
+            }
         }
 
         [HttpGet]
         [Route("{codigo:int}")]
         public ActionResult<AnimeDTO> Get(int codigo)
         {
-            var diretor = _servicoDiretor.Buscar(codigo);
+            try
+            {
+                var diretor = _servicoDiretor.Buscar(codigo);
 
-            return Ok(diretor);
+                return Ok(diretor);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+
+                return BadRequest();
+            }
         }
 
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] DiretorDTO diretorDto)
         {
-            _servicoDiretor.Cadastrar(diretorDto);
-            _servicoDiretor.Salvar();
+            try
+            {
+                _servicoDiretor.Cadastrar(diretorDto);
+                _servicoDiretor.Salvar();
 
-            return new CreatedAtRouteResult("ObterDiretor", new { codigo = diretorDto.Codigo }, diretorDto);
+                return new CreatedAtRouteResult("ObterDiretor", new { codigo = diretorDto.Codigo }, diretorDto);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+
+                return BadRequest();
+            }
         }
 
         [HttpPut("{codigo:int}")]
         public async Task<ActionResult> Put(int codigo, [FromBody] DiretorDTO diretorDto)
         {
-            if (codigo != diretorDto.Codigo)
+            try
             {
+                if (codigo != diretorDto.Codigo)
+                {
+                    return BadRequest();
+                }
+
+                _servicoDiretor.Atualizar(diretorDto);
+                _servicoDiretor.Salvar();
+
+                return Ok(diretorDto);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+
                 return BadRequest();
             }
-
-            _servicoDiretor.Atualizar(diretorDto);
-            _servicoDiretor.Salvar();
-
-            return Ok(diretorDto);
         }
 
         [HttpDelete("{codigo:int}")]
         public async Task<ActionResult<AnimeDTO>> Delete(int codigo)
         {
-            var diretorDto = _servicoDiretor.Buscar(codigo);
+            try
+            {
+                var diretorDto = _servicoDiretor.Buscar(codigo);
 
-            _servicoDiretor.Excluir(diretorDto);
-            _servicoDiretor.Salvar();
+                _servicoDiretor.Excluir(diretorDto);
+                _servicoDiretor.Salvar();
 
-            return Ok(diretorDto);
+                return Ok(diretorDto);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+
+                return BadRequest();
+            }
         }
     }
 }
