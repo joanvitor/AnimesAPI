@@ -1,5 +1,6 @@
 ﻿using Anime.Aplicacao.DTOs;
 using Anime.Aplicacao.Interfaces.Servicos;
+using Anime.Dominio.Entidades;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Anime.API.Controllers
@@ -11,10 +12,13 @@ namespace Anime.API.Controllers
     public class AnimeController : Controller
     {
         private readonly IServicoAnimeDTO _servicoAnime;
+        private readonly IServicoDTO<Diretor, DiretorDTO> _servicoDiretor;
 
-        public AnimeController(IServicoAnimeDTO servicoAnime)
+        public AnimeController(IServicoAnimeDTO servicoAnime,
+                               IServicoDTO<Diretor, DiretorDTO> servicoDiretor)
         {
             _servicoAnime = servicoAnime;
+            _servicoDiretor = servicoDiretor;
         }
 
         [HttpGet]
@@ -53,6 +57,19 @@ namespace Anime.API.Controllers
             var animeDto = _servicoAnime.ObterAtivos().Where(x => x.DiretorCodigo == codigoDiretor);
 
             return Ok(animeDto);
+        }
+
+        [HttpGet]
+        [Route("/diretor/{nomeDiretor}")]
+        public ActionResult<AnimeDTO> GetByCodigoDiretor(string nomeDiretor)
+        {
+            var codigosDiretor = _servicoDiretor.BuscarTodos()
+                                                              .Where(x => x.Nome.Contains(nomeDiretor))
+                                                              .Select(x => x.Codigo);
+
+            var animesDto = _servicoAnime.ObterAtivos().Where(x => codigosDiretor.Contains(x.DiretorCodigo));
+
+            return Ok(animesDto);
         }
 
         [HttpGet]
