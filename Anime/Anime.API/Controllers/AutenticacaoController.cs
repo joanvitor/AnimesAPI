@@ -2,6 +2,8 @@
 using Anime.Aplicacao.Interfaces.Servicos;
 using Anime.Dominio.Entidades;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace Anime.API.Controllers
 {
@@ -9,12 +11,15 @@ namespace Anime.API.Controllers
     {
         private readonly IServicoToken _servicoToken;
         private readonly IServicoDTO<Usuario, UsuarioDTO> _servicoUsuario;
+        private readonly IConfiguration _configuracao;
 
         public AutenticacaoController(IServicoToken servicoToken, 
-                                      IServicoDTO<Usuario, UsuarioDTO> servicoUsuario)
+                                      IServicoDTO<Usuario, UsuarioDTO> servicoUsuario, 
+                                      IConfiguration configuracao)
         {
             _servicoToken = servicoToken;
             _servicoUsuario = servicoUsuario;
+            _configuracao = configuracao;
         }
 
         /// <summary>
@@ -38,7 +43,14 @@ namespace Anime.API.Controllers
             if (usuarioBanco.Senha != usuario.Senha)
                 return BadRequest("Usuário ou senha inválidos");
 
-            var token = _servicoToken.GerarToken(usuario);
+            // arquivo appsettings.json
+            var chaveSecreta = _configuracao["ChaveSecreta:chave"];
+
+            byte[] bytesChave = Encoding.UTF8.GetBytes(chaveSecreta);
+
+            var chaveSecretaCodificada = new SymmetricSecurityKey(bytesChave);
+
+            var token = _servicoToken.GerarToken(usuario, chaveSecretaCodificada);
 
             return new ContentResult
             {
