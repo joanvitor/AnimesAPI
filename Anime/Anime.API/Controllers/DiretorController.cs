@@ -30,6 +30,9 @@ namespace Anime.API.Controllers
             {
                 var diretores = _servicoDiretor.BuscarTodos().ToList();
 
+                if (diretores.Count == 0)
+                    throw new Exception("Ainda não há diretor cadastrado!");
+
                 return Ok(diretores);
             }
             catch (Exception e)

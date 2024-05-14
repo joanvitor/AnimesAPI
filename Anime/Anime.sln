@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Anime.Dominio", "Anime.Dominio\Anime.Dominio.csproj", "{702E2CEC-0E6F-4E6A-AFFF-F88AB3B13DA0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Anime.Dominio", "Anime.Dominio\Anime.Dominio.csproj", "{702E2CEC-0E6F-4E6A-AFFF-F88AB3B13DA0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Anime.Infraestrutura", "Anime.Infraestrutura\Anime.Infraestrutura.csproj", "{449821F8-A4AB-48F0-9BBE-C0681B2D5432}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Anime.Infraestrutura", "Anime.Infraestrutura\Anime.Infraestrutura.csproj", "{449821F8-A4AB-48F0-9BBE-C0681B2D5432}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Anime.Aplicacao", "Anime.Aplicacao\Anime.Aplicacao.csproj", "{5ED9D699-EB56-466A-BCAB-32A39C01687D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Anime.Aplicacao", "Anime.Aplicacao\Anime.Aplicacao.csproj", "{5ED9D699-EB56-466A-BCAB-32A39C01687D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Anime.API", "Anime.API\Anime.API.csproj", "{659DFF7D-8A30-4C8C-93EF-EDE48CF04845}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Anime.API", "Anime.API\Anime.API.csproj", "{659DFF7D-8A30-4C8C-93EF-EDE48CF04845}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Anime.TestesUnitarios", "Anime.TestesUnitarios\Anime.TestesUnitarios.csproj", "{82B48411-4541-4068-9DE9-350ADB7D53F3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{659DFF7D-8A30-4C8C-93EF-EDE48CF04845}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{659DFF7D-8A30-4C8C-93EF-EDE48CF04845}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{659DFF7D-8A30-4C8C-93EF-EDE48CF04845}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82B48411-4541-4068-9DE9-350ADB7D53F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82B48411-4541-4068-9DE9-350ADB7D53F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82B48411-4541-4068-9DE9-350ADB7D53F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82B48411-4541-4068-9DE9-350ADB7D53F3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
