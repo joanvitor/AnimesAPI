@@ -5,6 +5,7 @@ using Anime.Dominio.Interfaces.Repositorios;
 using Anime.Infraestrutura.Contexto;
 using Anime.Infraestrutura.Repositorios;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,6 +34,9 @@ builder.Services.AddSwaggerGen();
 //    });
 //});
 
+// Autenticação
+builder.Services.AddAuthentication("Bearer").AddJwtBearer();
+
 builder.Services.AddScoped(typeof(IRepositorio<>), typeof(Repositorio<>));
 builder.Services.AddScoped<IRepositorioAnime, RepositorioAnime>();
 
@@ -50,6 +54,7 @@ if (app.Environment.IsDevelopment())
     {
         x.SwaggerEndpoint("v1/swagger.json", "API V1");
     });
+    //app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();

@@ -1,23 +1,25 @@
 ﻿using Anime.Aplicacao.DTOs;
 using Anime.Aplicacao.Interfaces.Servicos;
 using Anime.Dominio.Entidades;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Anime.API.Controllers
 {
     //TODO dar uma olhada sobre FLuentResult
 
+    [Authorize]
     [ApiController]
     [Route("api/Anime")]
     public class AnimeController : Controller
     {
         private readonly IServicoAnimeDTO _servicoAnime;
         private readonly IServicoDTO<Diretor, DiretorDTO> _servicoDiretor;
-        private readonly ILogger _logger;
+        private readonly ILogger<AnimeController> _logger;
 
         public AnimeController(IServicoAnimeDTO servicoAnime,
                                IServicoDTO<Diretor, DiretorDTO> servicoDiretor, 
-                               ILogger logger)
+                               ILogger<AnimeController> logger)
         {
             _servicoAnime = servicoAnime;
             _servicoDiretor = servicoDiretor;

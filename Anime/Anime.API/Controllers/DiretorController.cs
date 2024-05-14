@@ -1,28 +1,32 @@
 ﻿using Anime.Aplicacao.DTOs;
 using Anime.Aplicacao.Interfaces.Servicos;
 using Anime.Dominio.Entidades;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Anime.API.Controllers
 {
+    //PS E:\Anime.API> dotnet user-jwts create
+    //New JWT saved with ID 'd64ba2ac'.
+    //Name: Joan Vitor
+
+    //Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IkpvYW4gVml0b3IiLCJzdWIiOiJKb2FuIFZpdG9yIiwianRpIjoiZDY0YmEyYWMiLCJhdWQiOlsiaHR0cDovL2xvY2FsaG9zdDo3NjI2IiwiaHR0cHM6Ly9sb2NhbGhvc3Q6NDQzNzYiLCJodHRwOi8vbG9jYWxob3N0OjUyNzIiLCJodHRwczovL2xvY2FsaG9zdDo3MjU4Il0sIm5iZiI6MTcxNTY5MjEwMSwiZXhwIjoxNzIzNjQwOTAxLCJpYXQiOjE3MTU2OTIxMDIsImlzcyI6ImRvdG5ldC11c2VyLWp3dHMifQ.hxmGa7Lg0hFPaCEXG9hPoFoJRDG1uPFhZYfQJkXhIiI
+
+    [Authorize]
     [ApiController]
     [Route("api/Diretor")]
     public class DiretorController : Controller
     {
         private readonly IServicoDTO<Diretor, DiretorDTO> _servicoDiretor;
-        private readonly ILogger _logger;
+        private readonly ILogger<DiretorController> _logger;
 
         public DiretorController(IServicoDTO<Diretor, DiretorDTO> servicoDiretor, 
-                                 ILogger logger)
+                                 ILogger<DiretorController> logger)
         {
             _servicoDiretor = servicoDiretor;
             _logger = logger;
         }
 
-        /// <summary>
-        /// Teste
-        /// </summary>
-        /// <returns></returns>
         [HttpGet]
         public ActionResult<IEnumerable<DiretorDTO>> Get()
         {
