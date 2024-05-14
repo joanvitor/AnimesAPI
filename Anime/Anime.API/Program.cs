@@ -1,11 +1,15 @@
 using Anime.Aplicacao.Interfaces.Servicos;
 using Anime.Aplicacao.Mapeador;
 using Anime.Aplicacao.Servicos;
+using Anime.Aplicacao.Utils;
 using Anime.Dominio.Interfaces.Repositorios;
 using Anime.Infraestrutura.Contexto;
 using Anime.Infraestrutura.Repositorios;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using static System.Net.WebRequestMethods;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,24 +28,53 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-//builder.Services.AddSwaggerGen(x =>
-//{
-//    x.SwaggerDoc("versão 01", new OpenApiInfo
-//    {
-//        Title = "Titulo da API",
-//        Version = "v1.0.0",
-//        Description = "Descrição da api"
-//    });
-//});
+
+builder.Services.AddSwaggerGen(x =>
+{
+    x.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Title = "Protech - Desafio técnico - API",
+        Version = "v1.0.0",
+        Description = "Criação de uma Web API",
+        Contact = new OpenApiContact()
+        {
+            Name = "Joan Vitor Mendonça de Jesus",
+            Email = "joanvitor1997@gmail.com",
+            Url = new Uri("https://github.com/joanvitor")
+        }
+    });
+
+    var arquivoXml = "Anime.API.xml";
+    var caminhoXml = Path.Combine(AppContext.BaseDirectory, arquivoXml);
+    x.IncludeXmlComments(caminhoXml);
+});
 
 // Autenticação
-builder.Services.AddAuthentication("Bearer").AddJwtBearer();
+//builder.Services.AddAuthentication("Bearer").AddJwtBearer();
+
+builder.Services.AddAuthentication(x =>
+{
+    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(x =>
+{
+    x.RequireHttpsMetadata = false;
+    x.SaveToken = false;
+    x.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = ChaveSecreta.Obter(),
+        ValidateIssuer = false,
+        ValidateAudience = false
+    };
+});
 
 builder.Services.AddScoped(typeof(IRepositorio<>), typeof(Repositorio<>));
 builder.Services.AddScoped<IRepositorioAnime, RepositorioAnime>();
 
 builder.Services.AddScoped(typeof(IServicoDTO<,>), typeof(ServicoDTO<,>));
 builder.Services.AddScoped<IServicoAnimeDTO, ServicoAnimeDTO>();
+builder.Services.AddScoped(typeof(IServicoToken), typeof(ServicoToken));
 
 
 var app = builder.Build();
