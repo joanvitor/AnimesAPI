@@ -6,11 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Anime.API.Controllers
 {
-    //PS E:\Anime.API> dotnet user-jwts create
-    //New JWT saved with ID 'd64ba2ac'.
-    //Name: Joan Vitor
-
-    //Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IkpvYW4gVml0b3IiLCJzdWIiOiJKb2FuIFZpdG9yIiwianRpIjoiZDY0YmEyYWMiLCJhdWQiOlsiaHR0cDovL2xvY2FsaG9zdDo3NjI2IiwiaHR0cHM6Ly9sb2NhbGhvc3Q6NDQzNzYiLCJodHRwOi8vbG9jYWxob3N0OjUyNzIiLCJodHRwczovL2xvY2FsaG9zdDo3MjU4Il0sIm5iZiI6MTcxNTY5MjEwMSwiZXhwIjoxNzIzNjQwOTAxLCJpYXQiOjE3MTU2OTIxMDIsImlzcyI6ImRvdG5ldC11c2VyLWp3dHMifQ.hxmGa7Lg0hFPaCEXG9hPoFoJRDG1uPFhZYfQJkXhIiI
+    // Listar os tokens: dotnet user-jwts list
+    // Para listar as propriedades do token : dotnet user-jwts print KEY --show-all
 
     [Authorize]
     [ApiController]
