@@ -1,7 +1,6 @@
 ﻿using Anime.Aplicacao.DTOs;
 using Anime.Aplicacao.Interfaces.Servicos;
 using Anime.Dominio.Entidades;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Anime.API.Controllers

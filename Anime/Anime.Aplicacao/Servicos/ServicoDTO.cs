@@ -1,10 +1,8 @@
 ﻿using Anime.Aplicacao.Interfaces.Marcadores;
 using Anime.Aplicacao.Interfaces.Servicos;
 using AutoMapper;
-using System.Linq.Expressions;
 using Anime.Dominio.Interfaces.Marcadores;
 using Anime.Dominio.Interfaces.Repositorios;
-using Anime.Aplicacao.Conversores;
 using AutoMapper.QueryableExtensions;
 
 namespace Anime.Aplicacao.Servicos
