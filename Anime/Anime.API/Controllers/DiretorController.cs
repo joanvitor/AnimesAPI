@@ -46,11 +46,14 @@ namespace Anime.API.Controllers
 
         [HttpGet]
         [Route("{codigo:int}")]
-        public ActionResult<AnimeDTO> Get(int codigo)
+        public ActionResult<DiretorDTO> Get(int codigo)
         {
             try
             {
                 var diretor = _servicoDiretor.Buscar(codigo);
+
+                if (diretor == null)
+                    return NotFound();
 
                 return Ok(diretor);
             }
@@ -104,7 +107,7 @@ namespace Anime.API.Controllers
         }
 
         [HttpDelete("{codigo:int}")]
-        public async Task<ActionResult<AnimeDTO>> Delete(int codigo)
+        public async Task<ActionResult<DiretorDTO>> Delete(int codigo)
         {
             try
             {

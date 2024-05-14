@@ -14,12 +14,12 @@ namespace Anime.TestesUnitarios.Api
         private readonly DiretorController _controller;
 
         private readonly Mock<IServicoDTO<Diretor, DiretorDTO>> _servicoDtoDiretorMock;
-        private readonly Mock<ILogger> _loggerMock;
+        private readonly Mock<ILogger<DiretorController>> _loggerMock;
 
         public DiretorControllerUnitTest()
         {
             _servicoDtoDiretorMock = new Mock<IServicoDTO<Diretor, DiretorDTO>>();
-            _loggerMock = new Mock<ILogger>();
+            _loggerMock = new Mock<ILogger<DiretorController>>();
 
             _controller = new DiretorController(_servicoDtoDiretorMock.Object, _loggerMock.Object);
         }
@@ -54,6 +54,42 @@ namespace Anime.TestesUnitarios.Api
 
             // Assert
             Assert.IsType<ActionResult<IEnumerable<DiretorDTO>>>(actionResult);
+        }
+
+        [Fact]
+        public void DadoCodigoDiretorAoObterDiretorEDiretorExistirEntaoDeveRetornarUmDiretorReferenteAoCodigoInformado()
+        {
+            // Arrange
+            var codigoInformado = 1;
+
+            var diretor = new DiretorDTO
+            {
+                Codigo = codigoInformado,
+                Nome = "Diretor para teste"
+            };
+
+            _servicoDtoDiretorMock.Setup(x => x.Buscar(It.IsAny<int>())).Returns(diretor);
+
+            // Action
+            var actionResult = _controller.Get(codigoInformado);
+
+            // Assert
+            actionResult.Result.Should().BeOfType<OkObjectResult>();
+            Assert.IsType<ActionResult<DiretorDTO>>(actionResult);
+        }
+
+        [Fact]
+        public void DadoCodigoDiretorAoObterDiretorEDiretorNaoExistirEntaoNaoDeveRetornarUmDiretorReferenteAoCodigoInformado()
+        {
+            // Arrange
+            var codigoInformado = 1;
+            
+            // Action
+            var actionResult = _controller.Get(codigoInformado);
+
+            // Assert
+            actionResult.Result.Should().BeOfType<NotFoundResult>();
+            Assert.IsType<ActionResult<DiretorDTO>>(actionResult);
         }
     }
 }
