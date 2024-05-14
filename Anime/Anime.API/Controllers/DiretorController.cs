@@ -24,6 +24,10 @@ namespace Anime.API.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        /// Obtém todos os Diretores
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public ActionResult<IEnumerable<DiretorDTO>> Get()
         {
@@ -44,6 +48,11 @@ namespace Anime.API.Controllers
             }
         }
 
+        /// <summary>
+        /// Obtém o diretor a partir de um código
+        /// </summary>
+        /// <param name="codigo"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("{codigo:int}")]
         public ActionResult<DiretorDTO> Get(int codigo)
@@ -65,6 +74,11 @@ namespace Anime.API.Controllers
             }
         }
 
+        /// <summary>
+        /// Cadastrar um Diretor
+        /// </summary>
+        /// <param name="diretorDto"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] DiretorDTO diretorDto)
         {
@@ -83,6 +97,12 @@ namespace Anime.API.Controllers
             }
         }
 
+        /// <summary>
+        /// Atualizar diretor
+        /// </summary>
+        /// <param name="codigo"></param>
+        /// <param name="diretorDto"></param>
+        /// <returns></returns>
         [HttpPut("{codigo:int}")]
         public async Task<ActionResult> Put(int codigo, [FromBody] DiretorDTO diretorDto)
         {
@@ -106,6 +126,11 @@ namespace Anime.API.Controllers
             }
         }
 
+        /// <summary>
+        /// Excluir diretor
+        /// </summary>
+        /// <param name="codigo"></param>
+        /// <returns></returns>
         [HttpDelete("{codigo:int}")]
         public async Task<ActionResult<DiretorDTO>> Delete(int codigo)
         {

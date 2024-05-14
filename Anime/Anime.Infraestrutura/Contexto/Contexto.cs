@@ -48,6 +48,20 @@ namespace Anime.Infraestrutura.Contexto
                 entity.Property(x => x.Nome)
                       .IsRequired();
             });
+
+            modelBuilder.Entity<Usuario>(entity =>
+            {
+                entity.HasKey(x => x.Codigo);
+
+                entity.Property(x => x.Nome)
+                      .IsRequired();
+
+                entity.Property(x => x.Senha)
+                      .IsRequired();
+
+                entity.Property(x => x.Email)
+                      .IsRequired();
+            });
         }
     }
 }

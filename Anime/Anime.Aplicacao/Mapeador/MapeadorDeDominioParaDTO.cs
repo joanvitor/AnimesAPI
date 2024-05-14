@@ -10,6 +10,7 @@ namespace Anime.Aplicacao.Mapeador
         {
             CreateMap<Dominio.Entidades.Anime, AnimeDTO>().ReverseMap();
             CreateMap<Diretor, DiretorDTO>().ReverseMap();
+            CreateMap<Usuario, UsuarioDTO>().ReverseMap();
         }
     }
 }
