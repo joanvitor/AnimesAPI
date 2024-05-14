@@ -1,17 +1,14 @@
 using Anime.Aplicacao.Interfaces.Servicos;
 using Anime.Aplicacao.Mapeador;
 using Anime.Aplicacao.Servicos;
-using Anime.Aplicacao.Utils;
 using Anime.Dominio.Interfaces.Repositorios;
 using Anime.Infraestrutura.Contexto;
 using Anime.Infraestrutura.Repositorios;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
-using static System.Net.WebRequestMethods;
 
 var builder = WebApplication.CreateBuilder(args);
 
