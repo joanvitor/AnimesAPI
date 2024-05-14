@@ -6,8 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Anime.API.Controllers
 {
-    //TODO dar uma olhada sobre FLuentResult
-
     [Authorize]
     [ApiController]
     [Route("api/Anime")]
@@ -26,6 +24,10 @@ namespace Anime.API.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        /// Obter todos os Animes cadastrados
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public ActionResult<IEnumerable<AnimeDTO>> Get()
         {
@@ -43,6 +45,11 @@ namespace Anime.API.Controllers
             }
         }
 
+        /// <summary>
+        /// Obter Anime a partir do código
+        /// </summary>
+        /// <param name="codigo"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("{codigo:int}")]
         public ActionResult<AnimeDTO> Get(int codigo)
@@ -64,6 +71,12 @@ namespace Anime.API.Controllers
             }
         }
 
+        /// <summary>
+        /// Obter Animes de forma paginada
+        /// </summary>
+        /// <param name="pagina"></param>
+        /// <param name="quantidade"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("{pagina:int}/{quantidade:int}")]
         public ActionResult<IEnumerable<AnimeDTO>> GetPaginado(int pagina, int quantidade)
@@ -82,6 +95,11 @@ namespace Anime.API.Controllers
             }
         }
 
+        /// <summary>
+        /// Obter Anime a partir do código do Diretor
+        /// </summary>
+        /// <param name="codigoDiretor"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("/diretor/{codigoDiretor:int}")]
         public ActionResult<AnimeDTO> GetByCodigoDiretor(int codigoDiretor)
@@ -100,6 +118,11 @@ namespace Anime.API.Controllers
             }
         }
 
+        /// <summary>
+        /// Obter Anime a partir do nome do Diretor
+        /// </summary>
+        /// <param name="nomeDiretor"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("/diretor/{nomeDiretor}")]
         public ActionResult<AnimeDTO> GetByCodigoDiretor(string nomeDiretor)
@@ -122,6 +145,11 @@ namespace Anime.API.Controllers
             }
         }
 
+        /// <summary>
+        /// Obter Anime a partir do resumo
+        /// </summary>
+        /// <param name="resumo"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("resumo/{resumo}")]
         public ActionResult<AnimeDTO> GetByResumo(string resumo)
@@ -140,6 +168,11 @@ namespace Anime.API.Controllers
             }
         }
 
+        /// <summary>
+        /// Cadastrar um Anime
+        /// </summary>
+        /// <param name="animeDto"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] AnimeDTO animeDto)
         {
@@ -158,7 +191,12 @@ namespace Anime.API.Controllers
             }
         }
 
-
+        /// <summary>
+        /// Atualizar um Anime
+        /// </summary>
+        /// <param name="codigo"></param>
+        /// <param name="animeDto"></param>
+        /// <returns></returns>
         [HttpPut("{codigo:int}")]
         public async Task<ActionResult> Put(int codigo, [FromBody] AnimeDTO animeDto)
         {
@@ -182,6 +220,11 @@ namespace Anime.API.Controllers
             }
         }
 
+        /// <summary>
+        /// Apagar o Anime logicamente
+        /// </summary>
+        /// <param name="codigo"></param>
+        /// <returns></returns>
         [HttpDelete("{codigo:int}")]
         public async Task<ActionResult<AnimeDTO>> Delete(int codigo)
         {
